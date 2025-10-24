@@ -226,8 +226,6 @@ AWS_STORAGE_BUCKET_NAME = "devsearch-my-bucket"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if os.getcwd()=='/app':
-    DEBUG=False 
 
 LOGGING = {
  'version': 1,
@@ -235,3 +233,6 @@ LOGGING = {
  'handlers': {'console': {'class': 'logging.StreamHandler'}},
  'root': {'handlers': ['console'], 'level': 'ERROR'},
 }
+
+if os.getcwd()=='/app':
+    DEBUG=False 
