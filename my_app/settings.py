@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -186,15 +186,15 @@ EMAIL_HOST_PASSWORD = 'twxg lgie tstt ltov'
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
+# MEDIA_URL = '/images/'
 
 
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static'),
+   BASE_DIR / 'static'
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+# MEDIA_ROOT = BASE_DIR / 'static/images'
 
 
 
@@ -202,9 +202,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 
 STORAGES = {
     "default": {
-        # "BACKEND": "storages.backends.s3.S3Storage",
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
-    
+        "BACKEND": "storages.backends.s3.S3Storage",
+        # "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
+
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
@@ -228,3 +228,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if os.getcwd()=='/app':
     DEBUG=False 
+
+LOGGING = {
+ 'version': 1,
+ 'disable_existing_loggers': False,
+ 'handlers': {'console': {'class': 'logging.StreamHandler'}},
+ 'root': {'handlers': ['console'], 'level': 'ERROR'},
+}
