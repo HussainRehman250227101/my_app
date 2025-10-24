@@ -1,0 +1,49 @@
+{% load static %}
+
+<style>
+.inbox-link {
+  position: relative;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.inbox-badge {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+</style>
+<!-- Header Section -->
+<header class="header">
+  <div class="container container--narrow">
+    <a href="{% url 'profiles' %}" class="header__logo">
+      <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
+    </a>
+    <nav class="header__nav">
+      <input type="checkbox" id="responsive-menu" />
+      <label for="responsive-menu" class="toggle-menu">
+        <span>Menu</span>
+        <div class="toggle-menu__lines"></div>
+      </label>
+      <ul class="header__menu">
+        <li class="header__menuItem"><a href="{% url 'profiles' %}">Developers</a></li>
+        <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
+
+        {% if request.user.is_authenticated %}
+        <li class="header__menuItem"><a href="{% url 'inbox' %}" class="inbox-link">Inbox {% if has_unread_messages %}
+            <span class="inbox-badge"></span>
+            {% endif %}</a></li>
+        <li class="header__menuItem"><a href="{% url 'account' %}">My Account</a></li>
+        <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">Logout</a></li>
+        {% else %}
+        <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Login/Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>

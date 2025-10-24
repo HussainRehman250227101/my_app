@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'account' %}" style="font-size: xx-large; font-weight: bold;"><i class="im im-angle-left"><</i></a>
+            <br>
+
+            <form class="form" method="POST" actio="">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}</label>
+                    {{field}}
+                    {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

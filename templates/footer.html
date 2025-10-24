@@ -1,0 +1,14 @@
+{% load static %}
+<header class="header">
+  <div class="container container--narrow">
+    <!-- Footer Section -->
+    <footer class="footer">
+      <p>&copy; {{ year|default:"2025" }} DevSearch. All rights reserved.</p>
+      <nav>
+        <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'register' %}">Sign Up</a> |
+        <a href="{% url 'account' %}">Account</a>
+      </nav>
+    </footer>
+  </div>
+</header>
