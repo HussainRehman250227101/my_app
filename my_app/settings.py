@@ -12,11 +12,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)0rn(#pfl%j8xq4(0^&g((%-9z49fsuf1-0u)rqilm5&=&u==9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.railway.app','.up.railway.app']
 
+# ////////////////////////////////////////////////////////////
+# --- SECURITY / PROXY ---
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# If you're serving over HTTPS (Railway does), secure cookies are a good idea
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# If your frontend is on a different domain and you need cookies cross-site,
+# use 'None' (requires Secure). Otherwise 'Lax' is fine.
+CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if truly cross-site with cookies
+
+# --- CSRF: FULLY-QUALIFIED ORIGINS REQUIRED ---
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-8e0fa.up.railway.app",
+    "https://*.up.railway.app",
+    # add your custom domain(s) if any:
+    # "https://yourdomain.com",
+    # "https://www.yourdomain.com",
+]
+
+# ////////////////////////////////////////////////////////////
 
 # Application definition
 
