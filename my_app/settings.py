@@ -222,5 +222,5 @@ AWS_STORAGE_BUCKET_NAME = "devsearch-my-bucket"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# if os.getcwd()=='/app':
-#     DEBUG=False 
+if os.getcwd()=='/app':
+    DEBUG=False 
