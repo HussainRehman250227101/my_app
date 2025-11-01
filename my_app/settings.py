@@ -28,7 +28,7 @@ for var in env_vars_to_check:
     print(f"{var} = {os.getenv(var)}")
 
 print("=== END DEBUG ENV VARIABLES ===")
-
+print("RAILWAY ENVIRONMENT:", os.environ)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
