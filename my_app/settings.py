@@ -2,11 +2,32 @@ from datetime import timedelta
 from pathlib import Path
 import os
 
-print("DB_NAME:", os.getenv("DB_NAME"))
-print("DB_USER:", os.getenv("DB_USER"))
-print("DB_PASSWORD:", os.getenv("DB_PASSWORD"))
-print("DB_HOST:", os.getenv("DB_HOST"))
-print("DB_PORT:", os.getenv("DB_PORT"))
+import os
+
+print("=== DEBUG ENV VARIABLES ===")
+
+env_vars_to_check = [
+    # Django secret & debug
+    "SECRET_KEY", "DEBUG",
+
+    # Database
+    "DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "DATABASE_URL",
+
+    # Email
+    "EMAIL_HOST", "EMAIL_PORT", "EMAIL_USE_SSL", "EMAIL_USE_TLS", "EMAIL_HOST_USER", "EMAIL_HOST_PASSWORD",
+
+    # AWS / S3
+    "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_S3_REGION_NAME", "AWS_STORAGE_BUCKET_NAME",
+    "AWS_QUERYSTRING_AUTH", "AWS_S3_FILE_OVERWRITE",
+
+    # Django default auto field
+    "DEFAULT_AUTO_FIELD",
+]
+
+for var in env_vars_to_check:
+    print(f"{var} = {os.getenv(var)}")
+
+print("=== END DEBUG ENV VARIABLES ===")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
