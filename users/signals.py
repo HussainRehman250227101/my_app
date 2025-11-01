@@ -55,3 +55,4 @@ def updateprofile(sender,instance,created,**kwargs):
 post_save.connect(createprofile, sender=User)
 post_save.connect(updateprofile, sender=Profile)
 
+

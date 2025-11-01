@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)0rn(#pfl%j8xq4(0^&g((%-9z49fsuf1-0u)rqilm5&=&u==9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.railway.app','.up.railway.app']
 
@@ -197,7 +197,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -256,5 +257,7 @@ LOGGING = {
  'root': {'handlers': ['console'], 'level': 'ERROR'},
 }
 
-if os.getcwd()=='/app':
-    DEBUG=False 
+if os.getcwd() == "/app":
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    EMAIL_HOST = None
+    EMAIL_PORT = None
