@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)0rn(#pfl%j8xq4(0^&g((%-9z49fsuf1-0u)rqilm5&=&u==9'
+SECRET_KEY = os.getenv("SECRET_KEY") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
@@ -202,8 +202,9 @@ EMAIL_BACKEND = EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_HOST =   os.getenv("EMAIL_HOST")
 EMAIL_PORT = os.getenv("EMAIL_PORT") 
-EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") 
-EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") == "True"
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True"
+
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
@@ -237,8 +238,9 @@ STORAGES = {
 }
 
 # Now define AWS options at the top level
-AWS_QUERYSTRING_AUTH =  os.getenv("AWS_QUERYSTRING_AUTH")
-AWS_S3_FILE_OVERWRITE =  os.getenv("AWS_S3_FILE_OVERWRITE")
+AWS_QUERYSTRING_AUTH = os.getenv("AWS_QUERYSTRING_AUTH") == "True"
+AWS_S3_FILE_OVERWRITE = os.getenv("AWS_S3_FILE_OVERWRITE") == "True"
+
 AWS_ACCESS_KEY_ID =  os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY =  os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_S3_REGION_NAME =  os.getenv("AWS_S3_REGION_NAME")  # e.g., us-east-1
@@ -249,7 +251,8 @@ AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD =  os.getenv("DEFAULT_AUTO_FIELD")
+DEFAULT_AUTO_FIELD = os.getenv("DEFAULT_AUTO_FIELD", "django.db.models.BigAutoField")
+
 
 
 LOGGING = {
