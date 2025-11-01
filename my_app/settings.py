@@ -12,7 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)0rn(#pfl%j8xq4(0^&g((%-9z49fsuf1-0u)rqilm5&=&u==9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv("DEBUG") == "True"
+
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.railway.app','.up.railway.app']
 
@@ -150,11 +151,11 @@ WSGI_APPLICATION = 'my_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devsearch',
-        'USER': 'hussainkhan',
-        'PASSWORD': '_7s5#jbRM24EA',
-        'HOST': 'database-mumbai.c9emsug4a2dk.ap-south-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'NAME': os.getenv("NAME"),
+        'USER': os.getenv("USER"),
+        'PASSWORD':os.getenv("PASSWORD") ,
+        'HOST':os.getenv("HOST") ,
+        'PORT': os.getenv("PORT"),
     }
 }
 # DATABASES = {
@@ -199,12 +200,12 @@ USE_TZ = True
 
 EMAIL_BACKEND = EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'hussain.rehmanee@gmail.com'
-EMAIL_HOST_PASSWORD = 'twxg lgie tstt ltov'
+EMAIL_HOST =   os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT") 
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") 
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -236,19 +237,19 @@ STORAGES = {
 }
 
 # Now define AWS options at the top level
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_FILE_OVERWRITE = False
-AWS_ACCESS_KEY_ID = "AKIASYZ523KK65S2LJOX"
-AWS_SECRET_ACCESS_KEY = "XM7ZmlhiLDLUK+nAvuAUM+QIELkyL6IhECEMPmuO"
-AWS_S3_REGION_NAME = "ap-south-1"  # e.g., us-east-1
-AWS_STORAGE_BUCKET_NAME = "devsearch-my-bucket"
+AWS_QUERYSTRING_AUTH =  os.getenv("AWS_QUERYSTRING_AUTH")
+AWS_S3_FILE_OVERWRITE =  os.getenv("AWS_S3_FILE_OVERWRITE")
+AWS_ACCESS_KEY_ID =  os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY =  os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_S3_REGION_NAME =  os.getenv("AWS_S3_REGION_NAME")  # e.g., us-east-1
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME") 
 # AWS_DEFAULT_ACL = "public-read"
 # AWS_DEFAULT_ACL = None  # optional
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD =  os.getenv("DEFAULT_AUTO_FIELD")
 
 
 LOGGING = {
