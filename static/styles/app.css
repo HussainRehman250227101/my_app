@@ -155,11 +155,11 @@ img {
 
   .header__menuItem a {
     transition: all 0.5s ease-in-out;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
   }
 
   .header__menuItem a:hover {
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
     border-radius: 3px;
     background: var(--color-sub-light);
   }
