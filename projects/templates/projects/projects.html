@@ -110,8 +110,8 @@
 
                                 <div class="project__tags">
                                     {% if project.tags %}
-                                    {% if project.tags.all|length > 3 %}
-                                    {% for tag in project.tags.all|slice:3 %}
+                                    {% if project.tags.all|length > 2 %}
+                                    {% for tag in project.tags.all|slice:2 %}
                                     <span class="tag tag--pill tag--main">
                                         <small>{{tag}}</small>
                                     </span>
