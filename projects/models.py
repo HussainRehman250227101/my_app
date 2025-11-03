@@ -15,7 +15,7 @@ class Tag(models.Model):
 class Project(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=200)
-    image = models.ImageField( null = True, blank=True, default='default.jpg')
+    image = models.ImageField( null = True, blank=True, default='images/default.jpg')
     Description = models.TextField(max_length=2000 , null = True, blank=True )
     tags = models.ManyToManyField(Tag,null=True, blank=True)
     demo_link = models.CharField(max_length=1000 , null = True, blank=True )
