@@ -38,7 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'Vb8Nw2RqTz6LpYf3Hm4KdXj1Uc7Gs9Ae5Sh0JrQvLZpWxM' 
+SECRET_KEY = os.getenv("SECRET_KEY")# 'Vb8Nw2RqTz6LpYf3Hm4KdXj1Uc7Gs9Ae5Sh0JrQvLZpWxM' 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -281,16 +281,16 @@ AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = os.getenv("DEFAULT_AUTO_FIELD", "django.db.models.BigAutoField")
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGGING = {
- 'version': 1,
- 'disable_existing_loggers': False,
- 'handlers': {'console': {'class': 'logging.StreamHandler'}},
- 'root': {'handlers': ['console'], 'level': 'ERROR'},
-}
+# LOGGING = {
+#  'version': 1,
+#  'disable_existing_loggers': False,
+#  'handlers': {'console': {'class': 'logging.StreamHandler'}},
+#  'root': {'handlers': ['console'], 'level': 'ERROR'},
+# }
 
 if os.getcwd()=='/app':
     DEBUG=False 
