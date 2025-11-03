@@ -108,10 +108,11 @@
                                 </p>
 
 
-                                <div class="project__tags">
-                                    {% if project.tags %}
-                                        {% if project.tags.all|length > 2 %}
-                                            {% for tag in project.tags.all|slice:2 %}
+                                <div class="project__tags"> 
+                                    {% with tags = project.tags.all %}
+                                    {% if tags|length %}
+                                        {% if tags|length > 2 %}
+                                            {% for tag in tags|slice:2 %}
                                                 <span class="tag tag--pill tag--main">
                                                     <small>{{tag}}</small>
                                                 </span>
@@ -120,7 +121,7 @@
                                                 <small>...</small>
                                             </span>
                                         {% else %}
-                                            {% for tag in project.tags.all %}
+                                            {% for tag in tags %}
                                                 <span class="tag tag--pill tag--main">
                                                     <small>{{tag}}</small>
                                                  </span>
@@ -137,6 +138,7 @@
                                             <small>JavaScript</small>
                                         </span>
                                     {% endif %}
+                                    {% endwith %}
                                 </div>
                             </div>
                         </a>

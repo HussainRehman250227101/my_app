@@ -1,4 +1,4 @@
-.pyc
+*.pyc
 my_app/__pycache__/settings.cpython-313.pyc
 projects/__pycache__/models.cpython-313.pyc
 projects/__pycache__/utils.cpython-313.pyc
