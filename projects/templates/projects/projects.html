@@ -100,7 +100,7 @@
                         <a href="{% url 'project' project.id %}" class="project">
                             <img class="project__thumbnail" src="{{project.image.url}}" alt="project thumbnail" />
                             <div class="card__body">
-                                <h3 class="project__title">{{project.title|slice:60}}</h3>
+                                <h3 class="project__title">{{project.title|slice:20}}</h3>
                                 <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By {{project.owner.name|slice:60}}</a></p>
                                 <p class="project--rating">
                                     <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Postitive
