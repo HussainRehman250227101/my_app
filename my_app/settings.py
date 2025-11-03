@@ -182,11 +182,11 @@ WSGI_APPLICATION = 'my_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DB_NAME"),#'devsearch',
-        'USER': os.getenv("DB_USER"),#'hussainkhan',
-        'PASSWORD':os.getenv("DB_PASSWORD") ,#'_7s5#jbRM24EA',
-        'HOST':os.getenv("DB_HOST") ,#'database-mumbai.c9emsug4a2dk.ap-south-1.rds.amazonaws.com' , 
-        'PORT': os.getenv("DB_PORT"),#5432
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD':os.getenv("DB_PASSWORD") ,
+        'HOST':os.getenv("DB_HOST") ,
+        'PORT': os.getenv("DB_PORT"),
     }
 }
 # DATABASES = {
@@ -243,7 +243,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# MEDIA_URL = '/images/'
+MEDIA_URL = f"https://{os.getenv('AWS_STORAGE_BUCKET_NAME')}.s3.{os.getenv('AWS_S3_REGION_NAME')}.amazonaws.com/"
 
 
 STATICFILES_DIRS=[
@@ -251,7 +251,7 @@ STATICFILES_DIRS=[
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# MEDIA_ROOT = BASE_DIR / 'static/images'
+
 
 
 

@@ -1,1 +1,8 @@
 .pyc
+my_app/__pycache__/settings.cpython-313.pyc
+        projects/__pycache__/models.cpython-313.pyc
+        projects/__pycache__/utils.cpython-313.pyc
+        projects/__pycache__/views.cpython-313.pyc
+        projects/migrations/__pycache__/0002_alter_project_tags.cpython-313.pyc
+        projects/migrations/__pycache__/0003_alter_project_image.cpython-313.pyc
+        users/__pycache__/views.cpython-313.pyc
