@@ -100,7 +100,7 @@
                         <a href="{% url 'project' project.id %}" class="project">
                             <img class="project__thumbnail" src="{{project.image.url}}" alt="project thumbnail" />
                             <div class="card__body">
-                                <h3 class="project__title">{%if project.title|length > 20 %}{{project.title|slice:20|capfirst}}...{%else%}{{project.title|capfirst}}{%endif%}</h3>
+                                <h3 class="project__title">{%if project.title|length > 20 %}{{project.title|slice:":20"|capfirst}}...{%else%}{{project.title|capfirst}}{%endif%}</h3>
                                 <p><a class="project__author" href="{% url 'single-profile' project.owner.id %}">By {{project.owner.name|slice:60}}</a></p>
                                 <p class="project--rating">
                                     <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Postitive
@@ -109,10 +109,10 @@
 
 
                                 <div class="project__tags"> 
-                                    {% with tags = project.tags.all %}
+                                    {% with tags=project.tags.all %}
                                     {% if tags|length %}
                                         {% if tags|length > 2 %}
-                                            {% for tag in tags|slice:2 %}
+                                            {% for tag in tags|slice:":2" %}
                                                 <span class="tag tag--pill tag--main">
                                                     <small>{{tag}}</small>
                                                 </span>
