@@ -109,12 +109,34 @@
 
 
                                 <div class="project__tags">
-
-                                    {% for tag in project.tags.all|slice:5 %}
+                                    {% if project.tags %}
+                                    {% if project.tags.all|length > 3 %}
+                                    {% for tag in project.tags.all|slice:3 %}
                                     <span class="tag tag--pill tag--main">
                                         <small>{{tag}}</small>
                                     </span>
                                     {% endfor %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>...</small>
+                                    </span>
+                                    {% else %}
+                                    {% for tag in project.tags.all %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{tag}}</small>
+                                    </span>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% else %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>HTML</small>
+                                    </span>
+                                    <span class="tag tag--pill tag--main">
+                                        <small>CSS</small>
+                                    </span>
+                                    <span class="tag tag--pill tag--main">
+                                        <small>JavaScript</small>
+                                    </span>
+                                    {% endif %}
                                 </div>
                             </div>
                         </a>
