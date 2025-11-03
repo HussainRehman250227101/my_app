@@ -83,7 +83,7 @@
             </td>
             <td class="settings__tableInfo">
               <a href="{% url 'project' project.id %}">{{project.title}}</a>
-              <p>{{project.Description}}</p>
+              <p>{{project.Description|slice:150}}</p>
             </td>
             <td class="settings__tableActions">
               <a class="tag tag--pill tag--main settings__btn" href="{% url 'editproject' project.id %}"><i class="im im-edit"></i> Edit</a>
