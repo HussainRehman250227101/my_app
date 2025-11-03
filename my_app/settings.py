@@ -2,34 +2,34 @@ from datetime import timedelta
 from pathlib import Path
 import os
 
-import os
+# import os
 
-print("=== DEBUG ENV VARIABLES ===")
+# print("=== DEBUG ENV VARIABLES ===")
 
-env_vars_to_check = [
-    # Django secret & debug
-    "SECRET_KEY", "DEBUG",
+# env_vars_to_check = [
+#     # Django secret & debug
+#     "SECRET_KEY", "DEBUG",
 
-    # Database
-    "DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "DATABASE_URL",
+#     # Database
+#     "DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "DATABASE_URL",
 
-    # Email
-    "EMAIL_HOST", "EMAIL_PORT", "EMAIL_USE_SSL", "EMAIL_USE_TLS", "EMAIL_HOST_USER", "EMAIL_HOST_PASSWORD",
+#     # Email
+#     "EMAIL_HOST", "EMAIL_PORT", "EMAIL_USE_SSL", "EMAIL_USE_TLS", "EMAIL_HOST_USER", "EMAIL_HOST_PASSWORD",
 
 
-    # AWS / S3
-    "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_S3_REGION_NAME", "AWS_STORAGE_BUCKET_NAME",
-    "AWS_QUERYSTRING_AUTH", "AWS_S3_FILE_OVERWRITE",
+#     # AWS / S3
+#     "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_S3_REGION_NAME", "AWS_STORAGE_BUCKET_NAME",
+#     "AWS_QUERYSTRING_AUTH", "AWS_S3_FILE_OVERWRITE",
 
-    # Django default auto field
-    "DEFAULT_AUTO_FIELD",
-]
+#     # Django default auto field
+#     "DEFAULT_AUTO_FIELD",
+# ]
 
-for var in env_vars_to_check:
-    print(f"{var} = {os.getenv(var)}")
+# for var in env_vars_to_check:
+#     print(f"{var} = {os.getenv(var)}")
 
-print("=== END DEBUG ENV VARIABLES ===")
-print("RAILWAY ENVIRONMENT:", os.environ)
+# print("=== END DEBUG ENV VARIABLES ===")
+# print("RAILWAY ENVIRONMENT:", os.environ)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,11 +39,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'Vb8Nw2RqTz6LpYf3Hm4KdXj1Uc7Gs9Ae5Sh0JrQvLZpWxM' 
-if not SECRET_KEY:
-    raise ValueError("No SECRET_KEY set in environment!")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.railway.app','.up.railway.app']
@@ -259,8 +258,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        # "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
+        # "BACKEND": "storages.backends.s3.S3Storage",
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
 
     },
     "staticfiles": {
