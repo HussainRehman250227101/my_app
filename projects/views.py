@@ -47,7 +47,7 @@ def addproject(request):
             project = form.save(commit=False)
             project.owner = profile
             project.save()
-            project.save_m2m()
+            form.save_m2m()
             messages.success(request,'project added successfully')
             return redirect('account')
     context = {'form':form}
