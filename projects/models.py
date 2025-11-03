@@ -17,7 +17,7 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField( null = True, blank=True, default='default.jpg')
     Description = models.TextField(max_length=2000 , null = True, blank=True )
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag,null=True, blank=True)
     demo_link = models.CharField(max_length=1000 , null = True, blank=True )
     source_link = models.CharField(max_length=1000 , null = True, blank=True )
     vote_total  = models.IntegerField(default=0 ,null = True,blank=True)
