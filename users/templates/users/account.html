@@ -51,7 +51,7 @@
         </div>
         <div class="settings">
           <h3 class="settings__title">Skills</h3>
-          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add_skill' %}"><span class="material-symbols-outlined icon-alert-add">edit_document</span></a>
+          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add_skill' %}"><span class="material-symbols-outlined icon-alert-green">edit_document</span></a>
         </div>
 
         <table class="settings__table">
@@ -62,7 +62,7 @@
               <p>{{skill.description}}</p>
             </td>
             <td class="settings__tableActions">
-              <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit_skill' skill.id %}"><span class="material-symbols-outlined icon-alert-add">edit_document</span></a>
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit_skill' skill.id %}"><span class="material-symbols-outlined icon-alert-green">edit_document</span></a>
               <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete_skill' skill.id %}?next=/account"><span class="material-symbols-outlined icon-alert-red">delete</span></a>
             </td>
           </tr>
@@ -85,7 +85,7 @@
               <p>{{project.Description|slice:150}}</p>
             </td>
             <td class="settings__tableActions">
-              <a class="tag tag--pill tag--main settings__btn" href="{% url 'editproject' project.id %}"><span class="material-symbols-outlined icon-alert-add">edit_document</span></a>
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'editproject' project.id %}"><span class="material-symbols-outlined icon-alert-green">edit_document</span></a>
               <a class="tag tag--pill tag--main settings__btn" href="{% url 'deleteproject' project.id %}?next=/account"><span class="material-symbols-outlined icon-alert-red">delete</span></a>
             </td>
           </tr>
