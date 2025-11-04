@@ -1,9 +1,16 @@
 from django.http import JsonResponse
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import IsAuthenticated
 from .serializers import project_serializer
 from projects.models import Project,Review
+
+
+
+def check_api(request):
+    return render(request,'check_api.html')
+
 
 # ALL ROUTES
 @api_view(['GET'])

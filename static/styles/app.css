@@ -936,3 +936,18 @@ img {
   border-radius: 50%;
   display: inline-block;
 }
+
+/* #left {
+margin: 50px 50px ;
+}
+
+#right {
+margin: 50px 50px;
+} */
+
+#form_required{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
