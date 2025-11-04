@@ -951,3 +951,11 @@ margin: 50px 50px;
   justify-content: space-around;
 }
 
+.icon-alert-red {
+  color: #a83c34;      /* any CSS color works */
+  font-size: 24px;     /* optional */
+}
+.icon-alert-green {
+  color: #309438;      /* any CSS color works */
+  font-size: 24px;     /* optional */
+}
