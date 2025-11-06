@@ -35,7 +35,7 @@
         <li class="header__menuItem"><a href="{% url 'profiles' %}">Developers</a></li>
         <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
         <li class="header__menuItem"><a href="{% url 'check_api' %}" target = "_blank">API</a></li>
-        <li class="header__menuItem"><a href="https://github.com/HussainRehman250227101/Devsearch-source-code" target="_blank" rel="noopener noreferer">repo</a></li>
+        <li class="header__menuItem"><a href="https://github.com/HussainRehman250227101/my_app" target="_blank" rel="noopener noreferer">repo</a></li>
 
         {% if request.user.is_authenticated %}
         <li class="header__menuItem"><a href="{% url 'inbox' %}" class="inbox-link">Inbox {% if has_unread_messages %}
