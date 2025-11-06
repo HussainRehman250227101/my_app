@@ -5,16 +5,16 @@
 
 <main class="formPage my-xl" >
     <div class="content-box">
-        <div class="formWrapper">
+        <div class="formWrapper" style="text-align:center;">
             
-            <br>
+            <span class="material-symbols-outlined" style='color:red;font-size:140px; font-weight:100;'>x_circle</span>
 
             <form class="form" action="" method="POST">
                 {% csrf_token %}
                 <div class="form__field">
                     <p>Are you sure you want to delete <span style="font-weight: bold;">"{{delete}}"</span>?</p>
-                    <a href="{{prev_url}}" class="btn btn--sub btn--lg  my-md">back</a>
-                    <input type="submit" class="btn btn--sub btn--lg  my-md" value="confirm">
+                    <a href="{{prev_url}}" class="btn btn--sub btn--lg  my-md" style='background-color:gray;'>back</a>
+                    <input type="submit" class="btn btn--sub btn--lg  my-md" style='background-color:red;' value="confirm">
                 </div>
 
             </form>
