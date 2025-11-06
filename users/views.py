@@ -87,7 +87,7 @@ def editprofile(request):
         if form.is_valid():
             user = form.save()
             messages.success(request, "profile updated successfully")
-            return redirect('account')
+            return redirect(request.GET['next'] if 'next' in  request.GET else 'account')
         else:
             messages.error(request, "An error occured while creating profile")  
     context = {'form':form}
@@ -117,7 +117,7 @@ def addskill(request):
             skill.owner = profile
             skill.save()
             messages.success(request, "Skill added successfully")
-            return redirect('account')
+            return redirect(request.GET['next'] if 'next' in  request.GET else 'account')
     context = {'form':form}
     return render(request,'users/add_skill.html',context)
 
@@ -133,7 +133,7 @@ def editskill(request,pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Skill updated successfully")
-            return redirect('account')
+            return redirect(request.GET['next'] if 'next' in  request.GET else 'account')
     context = {'form':form}
     return render(request,'users/add_skill.html',context)
 
@@ -141,28 +141,30 @@ def editskill(request,pk):
 # DELETE SKILL 
 @login_required(login_url='login')
 def deleteskill(request,pk):
-    
+    prev_url = request.META.get('HTTP_REFERER','/')
     skill = Skill.objects.get(id=pk)
     if request.method=="POST":
         skill.delete()
         messages.success(request, "Skill deleted successfully")
-        return redirect('account')
-    context = {'delete':skill}
+        return redirect(request.GET['next'] if 'next' in  request.GET else 'account')
+    context = {'delete':skill,'prev_url':prev_url}
     return render(request,'delete.html',context)
 
 # INBOX 
 @login_required(login_url='login')
 def messages_inbox(request):
     profile = request.user.profile
-    all_messages = profile.receiver.all()
-    unread_messages_count = all_messages.filter(is_read=False).count()
-    
-    context ={'all_messages':all_messages,'unseen':unread_messages_count,}
+    all_received_messages = profile.receiver.all() 
+    unread_messages_count = all_received_messages.filter(is_read=False).count()
+    all_sent_msgs = profile.sender.all()
+    sent_count = all_sent_msgs.count()
+    context ={'all_messages':all_received_messages,'unseen':unread_messages_count,'sent_msg':all_sent_msgs,'sent_count':sent_count}
     return render(request, 'users/inbox.html',context)
 
-# SINGLE MESSAGE
+# SINGLE Received MESSAGE
 @login_required(login_url='login')
 def single_message(request,pk):
+   
     profile = request.user.profile
     the_message = profile.receiver.get(id=pk)
     if the_message.is_read == False:
@@ -170,6 +172,22 @@ def single_message(request,pk):
         the_message.save()
     context={'message':the_message}
     return render(request,'users/message.html',context)
+
+
+
+# SINGLE SENT MESSAGE
+@login_required(login_url='login')
+def single_sent_message(request,pk):
+    
+    profile = request.user.profile
+    the_message = profile.sender.get(id=pk)
+    
+    context={'message':the_message}
+    return render(request,'users/sent_messages.html',context)
+
+
+
+
 
 # SEND MESSAGE  
 @login_required(login_url='login')
@@ -184,6 +202,17 @@ def send_message(request,pk):
             receiver.sender = request.user.profile
             receiver.save()
             messages.success(request,'Your message has been sent!')
-            return redirect('single-profile',pk=msg_receiver.id)
+            return redirect(request.GET['next'] if 'next' in  request.GET else 'inbox')
     context={'msg_receiver':msg_receiver,'form':form}
-    return render(request, 'users/message_form.html',context)
+    return render(request, 'users/message_form.html',context) 
+
+
+# DELETE MESSAGE
+def delete_message(request,pk):
+    delete = Message.objects.get(id=pk)
+    prev_url = request.META.get('HTTP_REFERER','/')
+    if request.method =='POST':
+        delete.delete()
+        return redirect('inbox')
+    context = {'delete':delete,'prev_url':prev_url}
+    return render(request,'delete.html',context)

@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block content%}
   <main class="messagePage my-xl">
+
     <div class="content-box">
       <div class="message">
         <a class="backButton" href="{% url 'inbox' %}"><i class="im im-angle-left"><</i></a>
@@ -9,8 +10,16 @@
           <p class="message__date">{{message.created}}</p>
           <div class="message__body">
             {{message.body|linebreaksbr}}
+          </br>
+          <a href="{% url 'delete_message' message.id %}" class="btn btn--sub btn--lg  my-md">Delete</a>
+            <a href="{% url 'send_message' message.sender.id %}" class="btn btn--sub btn--lg  my-md">Reply</a>
           </div>
       </div>
     </div>
+   
+    
+  
+   
+   
   </main>
 {% endblock content%}

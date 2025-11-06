@@ -69,12 +69,13 @@ def editproject(request,pk):
 
 @login_required(login_url='login')
 def deleteproject(request,pk):
+    prev_url = request.META.get('HTTP_REFERER','/')
     profile = request.user.profile
     project = profile.project_set.get(id=pk)
     if request.method == "POST":
         project.delete()
         messages.success(request,'project deleted successfully')
         return redirect('account')
-    context = {'delete':project}
+    context = {'delete':project,'prev_url':prev_url}
     return render (request,'delete.html',context)
 

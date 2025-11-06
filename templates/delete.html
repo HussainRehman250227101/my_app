@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<main class="formPage my-xl">
+<main class="formPage my-xl" >
     <div class="content-box">
         <div class="formWrapper">
             
@@ -13,14 +13,18 @@
                 {% csrf_token %}
                 <div class="form__field">
                     <p>Are you sure you want to delete <span style="font-weight: bold;">"{{delete}}"</span>?</p>
-                    <a href="{{request.GET.next}}" class="btn btn--sub btn--lg  my-md">back</a>
+                    <a href="{{prev_url}}" class="btn btn--sub btn--lg  my-md">back</a>
                     <input type="submit" class="btn btn--sub btn--lg  my-md" value="confirm">
                 </div>
 
             </form>
+        </br>
+        
         </div>
     </div>
 </main>
 
 
 {% endblock content %}
+{% block footer %}
+{% endblock footer %}

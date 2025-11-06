@@ -26,7 +26,31 @@
         <p>No new Message</p>
         {% endif %}
 
+
+
       </ul>
     </div>
-  </main>
+
+    <div class="content-box" style='margin-top:10px; margin-bottom:10px;'>
+      <h3 class="inbox__title">Sent Messages(<span>{{sent_count}}</span>)</h3>
+      <ul class="messages" style="max-height: calc(100vh - 200px); overflow-y: auto; margin-bottom: 4rem;">
+
+        {% if sent_msg%}
+        {% for message in sent_msg %}
+        
+         <li class="message">
+          <a href="{% url 'single_sent_message' message.id %}">
+          <span class="message__author">{{message.receiver}}</span>
+          <span class="message__subject">{{message.subject}}</span>
+          <span class="message__date">{{message.created}}</span>
+          </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p>No sent Messages</p>
+        {% endif %}
+      </ul>
+    </div>
+
+  </main >
 {% endblock content %}

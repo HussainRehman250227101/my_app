@@ -40,7 +40,9 @@
 
     {% endblock content %}
 
-    {% include 'footer.html' %}    
+    {% block footer %}
+    {% include "footer.html" %}
+    {% endblock %}  
     
 </body>
 <script src="{% static 'uikit/app.js' %}"></script>

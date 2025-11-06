@@ -21,6 +21,8 @@ urlpatterns = [
     # MESSAGES 
     path('inbox/',views.messages_inbox,name='inbox'),
     path('single-message/<str:pk>/',views.single_message,name='single_message'),
+    path('single-sent-message/<str:pk>/',views.single_sent_message,name='single_sent_message'),
     path('send-message/<str:pk>/',views.send_message,name='send_message'),
+    path('delete-message/<str:pk>/',views.delete_message,name='delete_message'),
 ]
 
