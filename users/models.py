@@ -18,6 +18,7 @@ class Profile(models.Model):
     social_linkedin= models.CharField(max_length=200, null=True , blank=True)
     social_youtube= models.CharField(max_length=200, null=True , blank=True)
     social_website= models.CharField(max_length=200, null=True , blank=True)
+    social_facebook= models.CharField(max_length=200, null=True , blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 

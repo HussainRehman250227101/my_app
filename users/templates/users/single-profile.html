@@ -20,24 +20,35 @@
 
                             {% if single_profile.social_github %}
                             <li>
-                                <a title="Github" href="{{single_profile.social_github}}" target="_blank"><i class="im im-github"></i></a>
+                                <a title="Github" href="{{single_profile.social_github}}" target="_blank"><i class="fab fa-github"></i></a>
                             </li>
                             {% endif %}
                             {% if single_profile.social_twitter %}
                             <li>
-                                <a title="Twitter" href="{{single_profile.social_twitter}}" target="_blank"><i class="im im-twitter"></i></a>
+                                <a title="Twitter" href="{{single_profile.social_twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
                             </li>
                             {% endif %}
                             {% if single_profile.social_linkedin %}
                             <li>
-                                <a title="LinkedIn" href="{{single_profile.social_linkedin}}" target="_blank"><i class="im im-linkedin"></i></a>
+                                <a title="LinkedIn" href="{{single_profile.social_linkedin}}" target="_blank"><i class="fab fa-linkedin"></i></a>
                             </li>
                             {% endif %}
                             {% if single_profile.social_website %}
                             <li>
-                                <a title="Personal Website" href="{{single_profile.social_website}}" target="_blank"><i class="im im-globe"></i></a>
+                                <a title="Personal Website" href="{{single_profile.social_website}}" target="_blank"><i class="fas fa-globe"></i></a>
                             </li>
                             {% endif %}
+                            {% if single_profile.social_youtube %}
+                            <li>
+                                <a title="Personal Youtube" href="{{single_profile.social_youtube}}" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            {% endif %}
+                            {% if single_profile.social_facebook %}
+                            <li>
+                                <a title="Personal Youtube" href="{{single_profile.social_facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            {% endif %}
+                            
                         </ul>
                         {% if request.user.is_authenticated %}
                         {% if request.user.profile.id != single_profile.id   %}
