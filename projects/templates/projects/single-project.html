@@ -65,13 +65,13 @@
                         {% for review in reviews %}
                         {% if review.body %}
                         <div class="comment">
-                            <a href="{% url 'single-profile' project.owner.id %}">
+                            <a href="{% url 'single-profile' review.owner.id %}">
                                 <img class="avatar avatar--md"
-                                    src="{{project.owner.profile_image.url}}"
+                                    src="{{review.owner.profile_image.url}}"
                                     alt="user" />
                             </a>
                             <div class="comment__details">
-                                <a href="{% url 'single-profile' project.owner.id %}" class="comment__author">{{project.owner.name}}</a>
+                                <a href="{% url 'single-profile' review.owner.id %}" class="comment__author">{{review.owner.name}}</a>
                                 <p class="comment__info">
                                     {{review.body}}
                                 </p>
