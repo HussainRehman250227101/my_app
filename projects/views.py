@@ -20,6 +20,7 @@ def projects(request):
 
 def single_project(request, pk):
     project = Project.objects.get(id=pk)
+    project.reviews_count
     review = project.review_set.all()
     form = review_form()
     if request.method=='POST':
@@ -101,9 +102,11 @@ def edit_review(request,pk):
 
 def delete_review(request,pk):
     review = request.user.profile.review_set.get(id=pk)
+    prev_url = request.META.get('HTTP_REFERER','/')
     project = review.project
-    context = {'delete':review}
+    context = {'delete':review,'prev_url':prev_url}
     if request.method =='POST':
+        
         review.delete()
         project.reviews_count 
         messages.success(request,'review deleted successfully')

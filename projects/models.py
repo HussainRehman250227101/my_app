@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from users.models import Profile
+import math
 
 
 class Tag(models.Model):
@@ -38,9 +39,14 @@ class Project(models.Model):
         if reviews:
             total_votes = reviews.count()
             up_votes = reviews.filter(value = 'up').count()
-            ratio = (up_votes/total_votes)*100
+            ratio = (up_votes/total_votes)*100 
+            ratio = math.floor(ratio)
             self.vote_total = total_votes
             self.vote_ratio = ratio
+            self.save() 
+        else:
+            self.vote_ratio= 0
+            self.vote_total = 0
             self.save()
         
 
