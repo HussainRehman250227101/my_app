@@ -35,12 +35,13 @@ class Project(models.Model):
     def reviews_count(self):
     
         reviews = self.review_set.all()
-        total_votes = reviews.count()
-        up_votes = reviews.filter(value = 'up').count()
-        ratio = (up_votes/total_votes)*100
-        self.vote_total = total_votes
-        self.vote_ratio = ratio
-        self.save()
+        if reviews:
+            total_votes = reviews.count()
+            up_votes = reviews.filter(value = 'up').count()
+            ratio = (up_votes/total_votes)*100
+            self.vote_total = total_votes
+            self.vote_ratio = ratio
+            self.save()
         
 
     @property

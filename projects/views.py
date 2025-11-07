@@ -94,7 +94,19 @@ def edit_review(request,pk):
             inst.project = project 
             inst.save()
             project.reviews_count
-            messages.success(request,'rview updated successfully')
+            messages.success(request,'review updated successfully')
             return redirect('project',  pk=pk)
-    context = {'form':form,'prev_url':prev_url}
-    return render(request,'projects/edit_review.html',context)
+    context = {'form':form,'prev_url':prev_url,'review':review}
+    return render(request,'projects/edit_review.html',context) 
+
+def delete_review(request,pk):
+    review = request.user.profile.review_set.get(id=pk)
+    project = review.project
+    context = {'delete':review}
+    if request.method =='POST':
+        review.delete()
+        project.reviews_count 
+        messages.success(request,'review deleted successfully')
+        return redirect('project' , pk = review.project.id)
+
+    return render(request,'delete.html',context)

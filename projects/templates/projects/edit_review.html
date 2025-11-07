@@ -20,7 +20,8 @@
                         {% endfor %}
                     </div>
                     {% endfor %}
-                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                    <a class="btn btn--sub btn--lg  my-md" href="{% url 'delete_review' review.id  %}" style='background-color:red;padding-bottom:10px;'>Delete</a>
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="update" />
                 </form>
             </div>
         </div>
