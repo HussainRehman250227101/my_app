@@ -44,6 +44,7 @@
                     <h3 class="singleProject__subtitle">Add a Review</h3>
                     {% if request.user.profile.id in reviewers_id_list %}
                     <p style="color: red;"><b>You can't add another review</b></p>
+                    <a href="{% url 'edit_review' project.id %}">Edit current review</a>
                     {% elif request.user.profile == project.owner %}
                     <p style="color: red;"><b>You can't review your own project</b></p>
                     {% elif request.user.is_authenticated %}
@@ -62,6 +63,7 @@
                     {% endif %}
                     <div class="commentList">
                         <h3 class="singleProject__subtitle">Reviews</h3>
+                        {% if reviews %}
                         {% for review in reviews %}
                         {% if review.body %}
                         <div class="comment">
@@ -79,6 +81,9 @@
                         </div>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                        <p style="color: red;"><b>No review</b></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

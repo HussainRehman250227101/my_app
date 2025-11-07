@@ -6,5 +6,6 @@ urlpatterns = [
     path('addproject/',views.addproject, name = 'addproject'),
     path('deleteproject/<str:pk>',views.deleteproject, name = 'deleteproject'),
     path('editproject/<str:pk>/',views.editproject, name = 'editproject'),
+    path('edit_review/<str:pk>/',views.edit_review, name = 'edit_review'),
 
 ]

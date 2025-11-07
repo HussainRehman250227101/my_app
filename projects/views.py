@@ -79,3 +79,22 @@ def deleteproject(request,pk):
     context = {'delete':project,'prev_url':prev_url}
     return render (request,'delete.html',context)
 
+@login_required(login_url='login')
+def edit_review(request,pk):
+    prev_url = request.META.get('HTTP_REFERER','/')
+    profile = request.user.profile 
+    project = Project.objects.get(id=pk)
+    review = profile.review_set.get(project__id = pk)
+    form = review_form(instance= review)
+    if request.method =='POST':
+        form = review_form(request.POST,instance = review)
+        if form.is_valid():
+            inst = form.save(commit=False)
+            inst.owner = profile 
+            inst.project = project 
+            inst.save()
+            project.reviews_count
+            messages.success(request,'rview updated successfully')
+            return redirect('project',  pk=pk)
+    context = {'form':form,'prev_url':prev_url}
+    return render(request,'projects/edit_review.html',context)
