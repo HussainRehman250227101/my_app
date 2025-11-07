@@ -5,7 +5,7 @@
 <main class="formPage my-xl">
         <div class="content-box">
             <div class="formWrapper">
-                <a class="backButton" href="{{prev_url}}"><span class="material-symbols-outlined">arrow_back</span></a>
+                <a class="backButton" href="{% url 'project' project.id %}"><span class="material-symbols-outlined">arrow_back</span></a>
                 <br>
 
                 <form class="form" method="POST" enctype="multipart/form-data" >

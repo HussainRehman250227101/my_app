@@ -82,7 +82,7 @@ def deleteproject(request,pk):
 
 @login_required(login_url='login')
 def edit_review(request,pk):
-    prev_url = request.META.get('HTTP_REFERER','/')
+    # prev_url = request.META.get('HTTP_REFERER','/')
     profile = request.user.profile 
     project = Project.objects.get(id=pk)
     review = profile.review_set.get(project__id = pk)
@@ -97,7 +97,7 @@ def edit_review(request,pk):
             project.reviews_count
             messages.success(request,'review updated successfully')
             return redirect('project',  pk=pk)
-    context = {'form':form,'prev_url':prev_url,'review':review}
+    context = {'form':form,'review':review,'project':project}
     return render(request,'projects/edit_review.html',context) 
 
 def delete_review(request,pk):
