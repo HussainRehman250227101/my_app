@@ -1,6 +1,7 @@
 from datetime import timedelta
 from pathlib import Path
 import os
+from urllib.parse import parse_qsl, urlparse
 import dj_database_url
 import cloudinary
 
@@ -164,14 +165,26 @@ WSGI_APPLICATION = 'my_app.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600,
-            conn_health_checks=True,
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#             default=os.environ.get('DATABASE_URL'),
+#             conn_max_age=600,
+#             conn_health_checks=True,
+#     )
+# }
 
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
+        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
+    }
+}
 
 
 # Password validation
