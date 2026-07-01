@@ -21,7 +21,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 # This dynamically allows Azure's standard web app URLs
-ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost','https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net/']
+ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost','devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net']
 
 # ////////////////////////////////////////////////////////////
 # --- SECURITY / PROXY ---
@@ -38,7 +38,7 @@ CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if truly cross-site with cookies
 
 # --- CSRF: FULLY-QUALIFIED ORIGINS REQUIRED ---
 CSRF_TRUSTED_ORIGINS = [
-    'https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net/'
+    'https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net'
     # add your custom domain(s) if any:
     # "https://yourdomain.com",
     # "https://www.yourdomain.com",
@@ -234,7 +234,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = 'media'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
