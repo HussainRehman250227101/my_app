@@ -21,7 +21,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 # This dynamically allows Azure's standard web app URLs
-ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost','devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net']
+ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost','devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net',"www.devsearch-official.me","devsearch-official.me",]
 
 # ////////////////////////////////////////////////////////////
 # --- SECURITY / PROXY ---
@@ -38,7 +38,9 @@ CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if truly cross-site with cookies
 
 # --- CSRF: FULLY-QUALIFIED ORIGINS REQUIRED ---
 CSRF_TRUSTED_ORIGINS = [
-    'https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net'
+    'https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net',
+    "https://www.devsearch-official.me",
+    "https://devsearch-official.me",
     # add your custom domain(s) if any:
     # "https://yourdomain.com",
     # "https://www.yourdomain.com",
