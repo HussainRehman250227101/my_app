@@ -17,11 +17,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 # This dynamically allows Azure's standard web app URLs
-ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost','https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net/']
 
 # ////////////////////////////////////////////////////////////
 # --- SECURITY / PROXY ---
@@ -38,8 +38,7 @@ CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if truly cross-site with cookies
 
 # --- CSRF: FULLY-QUALIFIED ORIGINS REQUIRED ---
 CSRF_TRUSTED_ORIGINS = [
-    "https://web-production-8e0fa.up.railway.app",
-    "https://*.up.railway.app",
+    'https://devsearch-official-bxeddjhkfsbbd7h8.eastasia-01.azurewebsites.net/'
     # add your custom domain(s) if any:
     # "https://yourdomain.com",
     # "https://www.yourdomain.com",
@@ -220,7 +219,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-EMAIL_BACKEND = EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_HOST =   os.getenv("EMAIL_HOST")
 EMAIL_PORT = os.getenv("EMAIL_PORT") 
@@ -283,8 +282,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #  'root': {'handlers': ['console'], 'level': 'ERROR'},
 # }
 
-if os.getcwd()=='/app':
-    DEBUG=False 
+
 
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
