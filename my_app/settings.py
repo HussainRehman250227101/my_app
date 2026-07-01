@@ -19,7 +19,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','railway.com','web-production-8e0fa.up.railway.app','.up.railway.app']
+# This dynamically allows Azure's standard web app URLs
+ALLOWED_HOSTS = ['.azurewebsites.net', '127.0.0.1', 'localhost']
 
 # ////////////////////////////////////////////////////////////
 # --- SECURITY / PROXY ---
