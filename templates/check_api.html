@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div style="display: flex;">
+    <div style=" height: 75.3vh;flex: 1; " >
+    <main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+    
+            <form class="form" action="" method="POST">
+                
+                <div class="form__field" id='form_required'>
+                    <div style='display: inline-block;'>
+                        <a href="{% url 'api' %}" class="btn btn--sub btn--lg  my-md" id="left">Routes</a>
+                    </div>
+                    <div style='display: inline-block;'>
+                         <a id="right" href="https://apitesting-production-b7bb.up.railway.app/login.html" target='_blank' class="btn btn--sub btn--lg  my-md">Testing</a>
+                    </div>
+                     
+                   
+                    
+                </div>
+
+            </form>
+        </div>
+    </div>
+</main>
+</div>
+</div>
+
+
+{% endblock content %}
